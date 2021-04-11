@@ -143,11 +143,11 @@ public class InterfaceController {
 
 		String codigoProduto = txtCodigoProduto.getText();
 		String quantidade = txtQtdProduto.getText();
-
+		String cnpj = txtCnpJVendedor.getText();	
+		
+		
 		int codigoProduto2 = Integer.parseInt(codigoProduto);
-		int quantidade2 = Integer.parseInt(quantidade);
-		
-		
+		int quantidade2 = Integer.parseInt(quantidade);		
 
 		totalCompra = totalCompra
 				+ actionProduto.retornaProdutoByCodigo(codigoProduto2).getPrecoUnitario() * quantidade2;
