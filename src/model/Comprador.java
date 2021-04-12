@@ -1,12 +1,9 @@
 package model;
 
-//import java.text.DateFormat;
-//import java.text.SimpleDateFormat;
-//import java.util.Collection;
-//import java.util.HashSet;
-
-//import comprador.Comprador;
-//import venda.Venda;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Collection;
+import java.util.HashSet;
 
 public class Comprador {	
 
@@ -16,9 +13,9 @@ public class Comprador {
 	private double valoresaPagar = 0; //Total de valores a pagar do comprador.
 	private int qtdcomprasRealizadas = 0; //Número de compras realizadas pelo comprador.
 
-	//private Collection<Venda> compras = new HashSet<>(); //Coleção de compras do comprador.
+	private Collection<Venda> compras = new HashSet<>(); //Coleção de compras do comprador.
 
-	//private static final DateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+	private static final DateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
 	
 	public Comprador() {
 		
@@ -71,7 +68,7 @@ public class Comprador {
 	}	
 
 	//Adiciona uma compra/venda a coleção de compras.
-	/*
+	
 	public void adicionarCompra(Venda venda) {
 		compras.add(venda);
 	}
@@ -89,7 +86,7 @@ public class Comprador {
 			venda.getItensVenda();			
 			i++;
 		}		
-	} */
+	} 
 	
 	//Debita o saldo do vendedor.
 	public void debitaSaldoComprador(double valor) {
