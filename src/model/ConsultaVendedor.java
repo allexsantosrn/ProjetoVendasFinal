@@ -220,47 +220,6 @@ public class ConsultaVendedor {
 			return retorno;
 		}
 	
-	public String retornaValoresReceberVendedor (String cnpj) {
-		
-		String retorno = "Vendedor";
-		
-		if (hasVendedor(cnpj)) {
-
-			for (Vendedor vendedor : vendedores) {
-
-				if (vendedor.getCnpj().equals(cnpj)) {
-					
-					double valoresReceber = vendedor.getValoresReceber();
-					retorno = String.valueOf(valoresReceber);
-					
-					break;
-				}
-			}
-		}
-		
-		return retorno;
-	}
-	
-	public String retornaVendasRealizadasVendedor (String cnpj) {
-			
-			String retorno = "Vendedor";
-			
-			if (hasVendedor(cnpj)) {
-	
-				for (Vendedor vendedor : vendedores) {
-	
-					if (vendedor.getCnpj().equals(cnpj)) {
-						
-						int vendasRealizadas = vendedor.getqtdVendasRealizadas();
-						retorno = String.valueOf(vendasRealizadas);
-						
-						break;
-					}
-				}
-			}
-			
-			return retorno;
-		}
 		
 	
 }

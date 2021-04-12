@@ -14,7 +14,7 @@ public class FormaPagamentoPIX extends FormaPagamento{
 				vendedor.incrementaSaldoVendedor(valorCompra);
 				vendedor.incrementaVendasRealizadas();				
 				
-				System.out.println("Pagamento realizado com sucesso.");
+				System.out.println("Pagamento realizado com sucessoP.");
 				System.out.println("");
 			}
 

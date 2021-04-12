@@ -1,28 +1,44 @@
 package application;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import model.Cesta;
 import model.Comprador;
 import model.ConsultaComprador;
 import model.ConsultaProduto;
 import model.ConsultaVenda;
 import model.ConsultaVendedor;
 import model.FormaPagamentoPIX;
+import model.FormasPagamento;
+import model.PagamentoBoleto;
+import model.PagamentoCredito;
+import model.PagamentoDebito;
+import model.PagamentoTipos;
 import model.Produto;
 import model.Venda;
 import model.Vendedor;
 
-public class InterfaceController {
+public class InterfaceController<T> {
 
 	ConsultaVendedor actionVendedor = new ConsultaVendedor();
 	ConsultaComprador actionComprador = new ConsultaComprador();
 	ConsultaProduto actionProduto = new ConsultaProduto();
 	ConsultaVenda actionVenda = new ConsultaVenda();
-	Venda venda = new Venda();
+	Cesta cesta = new Cesta();
 
 	double totalCompra = 0.0;
+	int itensAdicionados = 0;
 
 	@FXML
 	private Label lbVendedor;
@@ -43,6 +59,7 @@ public class InterfaceController {
 	public void initialize() {
 
 		initData();
+
 	}
 
 	public void initData() {
@@ -56,9 +73,9 @@ public class InterfaceController {
 		actionVendedor.adicionarVendedor(vendedor3);
 
 		// Criando compradores
-		Comprador comprador1 = new Comprador("1", "Romário de Souza Faria", 800);
+		Comprador comprador1 = new Comprador("1", "Romário Faria", 800);
 		Comprador comprador2 = new Comprador("2", "Ronaldo Nazario", 250);
-		Comprador comprador3 = new Comprador("3", "Neymar Pereira", 180);
+		Comprador comprador3 = new Comprador("3", "Neymar Jr", 180);
 		actionComprador.adicionarComprador(comprador1);
 		actionComprador.adicionarComprador(comprador2);
 		actionComprador.adicionarComprador(comprador3);
@@ -139,21 +156,116 @@ public class InterfaceController {
 	private Label lbTotalCompra;
 
 	@FXML
+	private Label lbCPFCompradorVenda;
+
+	@FXML
+	private Label lbCodigoProdutoVenda;
+
+	@FXML
+	private Label lbQtdItensAdicionados;
+
+	@FXML
+	private Label lbCNPJVendedorVenda;
+
+	@FXML
+	private DatePicker dpVencimento;
+
+	@FXML
+	private ComboBox<PagamentoTipos> combo;
+
+	private List<PagamentoTipos> categorias = new ArrayList<PagamentoTipos>();
+
+	private ObservableList<PagamentoTipos> obsCategorias;
+
+	@FXML
 	void btAddItem(ActionEvent event) {
+		
+		categorias.clear();
+		carregarCategorias();
 
 		String codigoProduto = txtCodigoProduto.getText();
 		String quantidade = txtQtdProduto.getText();
-		String cnpj = txtCnpJVendedor.getText();	
-		
-		
-		int codigoProduto2 = Integer.parseInt(codigoProduto);
-		int quantidade2 = Integer.parseInt(quantidade);		
+		String cnpj = txtCnpJVendedor.getText();
+		String cpf = txtCpfComprador.getText();
 
-		totalCompra = totalCompra
-				+ actionProduto.retornaProdutoByCodigo(codigoProduto2).getPrecoUnitario() * quantidade2;
+		int codigo = Integer.parseInt(codigoProduto);
 
-		lbTotalCompra.setText(String.valueOf(totalCompra));
-		lbStatusProduto.setText("Item Adicionado com Sucesso");
+		if (actionComprador.hasComprador(cpf)) {
+
+			String nomeComprador = actionComprador.retornaNomeComprador(cpf);
+			lbCPFCompradorVenda.setText(nomeComprador);
+		}
+
+		else {
+
+			lbCPFCompradorVenda.setText("Comprador não localizado");
+		}
+
+		if (actionVendedor.hasVendedor(cnpj)) {
+
+			String nomeVendedor = actionVendedor.retornaNomeVendedor(cnpj);
+			lbCNPJVendedorVenda.setText(nomeVendedor);
+		}
+
+		else {
+
+			lbCNPJVendedorVenda.setText("Vendedor não localizado");
+		}
+
+		if (actionProduto.hasProduto(codigo)) {
+
+			String nomeProduto = actionProduto.retornaNomeProduto(codigo);
+			lbCodigoProdutoVenda.setText(nomeProduto);
+		}
+
+		else {
+
+			lbCodigoProdutoVenda.setText("Item não localizado");
+		}
+
+		if (cesta.hasItemCesta(actionProduto.retornaProdutoByCodigo(codigo))) {
+
+			lbStatusProduto.setText("Item já adicionado à compra.");
+
+			Alert alert = new Alert(Alert.AlertType.WARNING);
+			alert.setTitle("Item adicionado à compra");
+			alert.setHeaderText("Item já adicionado à compra");
+			alert.setContentText("O item selecionado já foi adicionado à compra.");
+			alert.show();
+
+		}
+
+		else if (actionVendedor.hasProdutoCatalogo(actionVendedor.retornaVendedorByCNPJ(cnpj), codigo)) {
+
+			int codigoProduto2 = Integer.parseInt(codigoProduto);
+			int quantidade2 = Integer.parseInt(quantidade);
+
+			txtCpfComprador.setDisable(true);
+
+			cesta.adicionarItemCesta(actionProduto.retornaProdutoByCodigo(codigoProduto2));
+
+			totalCompra = totalCompra
+					+ actionProduto.retornaProdutoByCodigo(codigoProduto2).getPrecoUnitario() * quantidade2;
+
+			itensAdicionados = itensAdicionados + quantidade2;
+
+			lbTotalCompra.setText(String.valueOf(totalCompra));
+			lbQtdItensAdicionados.setText(String.valueOf(itensAdicionados));
+			lbStatusProduto.setText("Item Adicionado com Sucesso!");
+
+		}
+
+		else {
+
+			lbStatusProduto.setText("Item não localizado no catálogo.");
+
+			Alert alert = new Alert(Alert.AlertType.WARNING);
+			alert.setTitle("Item não localizado");
+			alert.setHeaderText("Item não localizado");
+			alert.setContentText("Item não localizado no catálogo do vendedor selecionado.");
+			alert.show();
+		}
+
 	}
 
 	@FXML
@@ -162,15 +274,144 @@ public class InterfaceController {
 		String cpf = txtCpfComprador.getText();
 		String cnpj = txtCnpJVendedor.getText();
 
-		FormaPagamentoPIX formaPagamento = new FormaPagamentoPIX();
+		PagamentoTipos categoria = combo.getSelectionModel().getSelectedItem();
 
-		formaPagamento.realizarPagamento(actionVendedor.retornaVendedorByCNPJ(cnpj),
-				actionComprador.retornaCompradorByCPF(cpf), totalCompra);
+		String tipoPagamento = categoria.getFormaPagamento().getDescricao();
 
-		
-		venda.setComprador(actionComprador.retornaCompradorByCPF(cpf));
-		venda.setVendedor(actionVendedor.retornaVendedorByCNPJ(cnpj));
-		venda.setPagamento(formaPagamento);
+		System.out.println("Tipo de Pagamento selecionado: " + tipoPagamento);
+
+		if (!actionComprador.hasComprador(cpf)) {
+
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setTitle("Comprador não localizado");
+			alert.setHeaderText("Comprador não localizado");
+			alert.setContentText("Não foram localizados compradores com o CPF informado.");
+			alert.show();
+		}
+
+		else if (!actionVendedor.hasVendedor(cnpj)) {
+
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setTitle("Vendedor não localizado");
+			alert.setHeaderText("Vendedor não localizado");
+			alert.setContentText("Não foram localizados vendedores com o CNPJ informado.");
+			alert.show();
+		}
+
+		else if (tipoPagamento == "Credito") {
+
+			PagamentoCredito formaPagamentoCredito = new PagamentoCredito();
+
+			formaPagamentoCredito.realizarPagamento(actionVendedor.retornaVendedorByCNPJ(cnpj),
+					actionComprador.retornaCompradorByCPF(cpf), totalCompra);
+
+			Venda venda = new Venda();
+			venda.setComprador(actionComprador.retornaCompradorByCPF(cpf));
+			venda.setVendedor(actionVendedor.retornaVendedorByCNPJ(cnpj));
+			venda.setPagamento(formaPagamentoCredito);
+
+			actionVenda.adicionarVenda(venda);
+
+			clearCamposVenda();
+		}
+
+		else if (tipoPagamento == "PIX") {
+
+			FormaPagamentoPIX formaPagamento = new FormaPagamentoPIX();
+
+			if (formaPagamento.checarFundos(actionComprador.retornaCompradorByCPF(cpf), totalCompra)) {
+
+				formaPagamento.realizarPagamento(actionVendedor.retornaVendedorByCNPJ(cnpj),
+						actionComprador.retornaCompradorByCPF(cpf), totalCompra);
+
+				Venda venda = new Venda();
+				venda.setComprador(actionComprador.retornaCompradorByCPF(cpf));
+				venda.setVendedor(actionVendedor.retornaVendedorByCNPJ(cnpj));
+				venda.setPagamento(formaPagamento);
+
+				actionVenda.adicionarVenda(venda);
+
+				alertaSucesso();
+				clearCamposVenda();
+
+			}
+
+			else {
+
+				alertaNoFunds();
+			}
+
+		}
+
+		else if (tipoPagamento == "Debito") {
+
+			PagamentoDebito formaPagamentoDebito = new PagamentoDebito();
+
+			if (formaPagamentoDebito.checarFundos(actionComprador.retornaCompradorByCPF(cpf), totalCompra)) {
+
+				formaPagamentoDebito.realizarPagamento(actionVendedor.retornaVendedorByCNPJ(cnpj),
+						actionComprador.retornaCompradorByCPF(cpf), totalCompra);
+
+				Venda venda = new Venda();
+				venda.setComprador(actionComprador.retornaCompradorByCPF(cpf));
+				venda.setVendedor(actionVendedor.retornaVendedorByCNPJ(cnpj));
+				venda.setPagamento(formaPagamentoDebito);
+
+				actionVenda.adicionarVenda(venda);
+
+				alertaSucesso();
+				clearCamposVenda();
+
+			}
+
+			else {
+
+				alertaNoFunds();
+			}
+		}
+
+		else {
+
+			PagamentoBoleto formaPagamentoBoleto = new PagamentoBoleto();			
+			
+			if (formaPagamentoBoleto.checarFundos(actionComprador.retornaCompradorByCPF(cpf), totalCompra)) {
+				
+				LocalDate dataPagamento = LocalDate.now();
+				
+				System.out.println(dataPagamento);
+				
+				LocalDate dataVencimento = dpVencimento.getValue();
+				
+				System.out.println(dataVencimento);
+				
+				if (formaPagamentoBoleto.verificavencimento(dataVencimento, dataPagamento)) {				
+				
+				formaPagamentoBoleto.realizarPagamento(actionVendedor.retornaVendedorByCNPJ(cnpj),
+						actionComprador.retornaCompradorByCPF(cpf), totalCompra);
+
+				Venda venda = new Venda();
+				venda.setComprador(actionComprador.retornaCompradorByCPF(cpf));
+				venda.setVendedor(actionVendedor.retornaVendedorByCNPJ(cnpj));
+				venda.setPagamento(formaPagamentoBoleto);
+
+				actionVenda.adicionarVenda(venda);
+
+				alertaSucesso();
+				clearCamposVenda();
+				
+				}
+				
+				else {
+					
+					alertaVencimento();
+				}
+			}
+
+			else {
+
+				alertaNoFunds();
+			}
+		}
 
 	}
 
@@ -178,6 +419,71 @@ public class InterfaceController {
 	void btVoltarVenda(ActionEvent event) {
 
 		Main.changedScreen("secundary");
+	}
+
+	public void alertaNoFunds() {
+
+		Alert alert = new Alert(Alert.AlertType.ERROR);
+		alert.setTitle("Não há fundos");
+		alert.setHeaderText("Náo há recursos disponíveis");
+		alert.setContentText("Não há fundos suficientes para realização da compra.");
+		alert.show();
+	}
+
+	public void alertaSucesso() {
+
+		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+		alert.setTitle("Compra confirmada");
+		alert.setHeaderText("Compra realizada com sucesso");
+		alert.setContentText("A compra foi realizada com sucesso.");
+		alert.show();
+
+	}
+	
+	public void alertaVencimento() {
+
+		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+		alert.setTitle("Boleto vencido");
+		alert.setHeaderText("Pagamento além da data de vencimento");
+		alert.setContentText("Boleto vencido. Não é possível realizar pagamento.");
+		alert.show();
+
+	}
+
+	public void clearCamposVenda() {
+
+		cesta.removerCesta();
+		txtCpfComprador.setDisable(false);
+		totalCompra = 0.0;
+		itensAdicionados = 0;
+		lbTotalCompra.setText("");
+		lbStatusProduto.setText("");
+		txtCpfComprador.setText("");
+		txtCnpJVendedor.setText("");
+		txtCodigoProduto.setText("");
+		txtQtdProduto.setText("");
+		lbQtdItensAdicionados.setText("");
+		lbCNPJVendedorVenda.setText("");
+		lbCPFCompradorVenda.setText("");
+		categorias.clear();
+
+	}
+
+	public void carregarCategorias() {
+
+		PagamentoTipos categoria1 = new PagamentoTipos(1, FormasPagamento.PIX);
+		PagamentoTipos categoria2 = new PagamentoTipos(2, FormasPagamento.BOLETO);
+		PagamentoTipos categoria3 = new PagamentoTipos(3, FormasPagamento.CREDITO);
+		PagamentoTipos categoria4 = new PagamentoTipos(4, FormasPagamento.DEBITO);
+
+		categorias.add(categoria1);
+		categorias.add(categoria2);
+		categorias.add(categoria3);
+		categorias.add(categoria4);
+
+		obsCategorias = FXCollections.observableArrayList(categorias);
+
+		combo.setItems(obsCategorias);
 	}
 
 	@FXML

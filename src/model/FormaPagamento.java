@@ -3,6 +3,7 @@ package model;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 
 public abstract class FormaPagamento {
@@ -60,12 +61,12 @@ public abstract class FormaPagamento {
 		return hasFundos;
 	}
 	
-	//Returna true caso a data de pagamento seja maior que a data do vencimento.
-	public boolean verificavencimento(Date dataVencimento, Date dataPagamento) {
+	//Returna false caso a data de pagamento seja maior que a data do vencimento.
+	public boolean verificavencimento(LocalDate dataVencimento, LocalDate dataPagamento) {
 
 		boolean data = true;
 
-		if (dataPagamento.after(dataVencimento)) {
+		if (dataPagamento.isAfter(dataVencimento)) {
 
 			data = false;
 		}
