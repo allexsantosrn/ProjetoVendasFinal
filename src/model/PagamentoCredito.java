@@ -13,7 +13,7 @@ public class PagamentoCredito extends FormaPagamento {
 		vendedor.incrementaValoresaReceber(creditoVendedor);
 		vendedor.incrementaVendasRealizadas();
 
-		System.out.println("Pagamento realizado com sucessoC.");
+		System.out.println("Pagamento realizado com sucesso.");
 		System.out.println("");
 
 	}

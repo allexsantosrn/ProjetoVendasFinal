@@ -61,7 +61,7 @@ public abstract class FormaPagamento {
 		return hasFundos;
 	}
 	
-	//Returna false caso a data de pagamento seja maior que a data do vencimento.
+	//Retorna false caso a data de pagamento seja maior que a data do vencimento.
 	public boolean verificavencimento(LocalDate dataVencimento, LocalDate dataPagamento) {
 
 		boolean data = true;
@@ -75,6 +75,7 @@ public abstract class FormaPagamento {
 
 	}
 	
+	//Retorna true caso o boleto esteja vencido.	
 	public boolean isVencido(LocalDate dataPagamento, LocalDate dataVencimento) {
 		
 		boolean vencido = false;
@@ -82,9 +83,8 @@ public abstract class FormaPagamento {
 		if (dataPagamento.isAfter(dataVencimento)) {
 			
 			vencido = true;
-		}
+		}		
 		
-		System.out.println(vencido);
 		return vencido;
 	}
 

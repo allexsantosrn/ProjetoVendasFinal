@@ -171,6 +171,12 @@ public class InterfaceController<T> {
 	private DatePicker dpVencimento;
 
 	@FXML
+	private Label lbSaldoComprador;
+
+	@FXML
+	private Label lbSaldoVendedor;
+
+	@FXML
 	private ComboBox<PagamentoTipos> combo;
 
 	private List<PagamentoTipos> categorias = new ArrayList<PagamentoTipos>();
@@ -188,12 +194,16 @@ public class InterfaceController<T> {
 		String cnpj = txtCnpJVendedor.getText();
 		String cpf = txtCpfComprador.getText();
 
+		String saldoComprador = actionComprador.retornaSaldoComprador(cpf);
+		String saldoVendedor = actionVendedor.retornaSaldoVendedor(cnpj);
+
 		int codigo = Integer.parseInt(codigoProduto);
 
 		if (actionComprador.hasComprador(cpf)) {
 
 			String nomeComprador = actionComprador.retornaNomeComprador(cpf);
 			lbCPFCompradorVenda.setText(nomeComprador);
+			lbSaldoComprador.setText(saldoComprador);
 		}
 
 		else {
@@ -205,6 +215,7 @@ public class InterfaceController<T> {
 
 			String nomeVendedor = actionVendedor.retornaNomeVendedor(cnpj);
 			lbCNPJVendedorVenda.setText(nomeVendedor);
+			lbSaldoVendedor.setText(saldoVendedor);
 		}
 
 		else {
@@ -241,6 +252,7 @@ public class InterfaceController<T> {
 			int quantidade2 = Integer.parseInt(quantidade);
 
 			txtCpfComprador.setDisable(true);
+			txtCnpJVendedor.setDisable(true);
 
 			cesta.adicionarItemCesta(actionProduto.retornaProdutoByCodigo(codigoProduto2));
 
@@ -312,6 +324,7 @@ public class InterfaceController<T> {
 
 			actionVenda.adicionarVenda(venda);
 
+			alertaSucesso();
 			clearCamposVenda();
 		}
 
@@ -338,7 +351,7 @@ public class InterfaceController<T> {
 
 			else {
 
-				alertaNoFunds();
+				alertaNoFunds();				
 			}
 
 		}
@@ -368,7 +381,7 @@ public class InterfaceController<T> {
 
 				alertaNoFunds();
 			}
-		}
+		}		
 
 		else {
 
@@ -378,13 +391,13 @@ public class InterfaceController<T> {
 
 				LocalDate dataPagamento = LocalDate.now();
 
-				System.out.println("Data de Pagamento: "+dataPagamento);
+				System.out.println("Data de Pagamento: " + dataPagamento);
 
 				LocalDate dataVencimento = dpVencimento.getValue();
 
-				System.out.println("Data de Vencimento: "+dataVencimento);				
-				
-				if(formaPagamentoBoleto.isVencido(dataPagamento, dataVencimento)) {
+				System.out.println("Data de Vencimento: " + dataVencimento);
+
+				if (formaPagamentoBoleto.isVencido(dataPagamento, dataVencimento)) {
 
 					alertaVencimento();
 
@@ -415,10 +428,19 @@ public class InterfaceController<T> {
 		}
 
 	}
+	
+	 @FXML
+	    void btReiniciar(ActionEvent event) {
+		 
+		 clearCamposVenda();
+
+	    }
+	
 
 	@FXML
 	void btVoltarVenda(ActionEvent event) {
-
+		
+		clearCamposVenda();
 		Main.changedScreen("secundary");
 	}
 
@@ -443,18 +465,19 @@ public class InterfaceController<T> {
 
 	public void alertaVencimento() {
 
-		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+		Alert alert = new Alert(Alert.AlertType.ERROR);
 		alert.setTitle("Boleto vencido");
 		alert.setHeaderText("Pagamento além da data de vencimento");
 		alert.setContentText("Boleto vencido. Não é possível realizar pagamento.");
 		alert.show();
 
-	}
+	}	
 
 	public void clearCamposVenda() {
 
 		cesta.removerCesta();
 		txtCpfComprador.setDisable(false);
+		txtCnpJVendedor.setDisable(false);
 		totalCompra = 0.0;
 		itensAdicionados = 0;
 		lbTotalCompra.setText("");
@@ -466,7 +489,12 @@ public class InterfaceController<T> {
 		lbQtdItensAdicionados.setText("");
 		lbCNPJVendedorVenda.setText("");
 		lbCPFCompradorVenda.setText("");
-		categorias.clear();
+		lbSaldoComprador.setText("");
+		lbSaldoVendedor.setText("");
+		dpVencimento.setValue(null);
+		combo.getSelectionModel().clearSelection();
+		combo.getItems().clear();
+		categorias.clear();		
 
 	}
 
