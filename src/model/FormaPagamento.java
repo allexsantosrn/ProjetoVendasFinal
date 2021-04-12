@@ -66,13 +66,26 @@ public abstract class FormaPagamento {
 
 		boolean data = true;
 
-		if (dataPagamento.isAfter(dataVencimento)) {
+		if (dataVencimento.isAfter(dataPagamento)) {
 
 			data = false;
 		}
 
 		return data;
 
+	}
+	
+	public boolean isVencido(LocalDate dataPagamento, LocalDate dataVencimento) {
+		
+		boolean vencido = false;
+		
+		if (dataPagamento.isAfter(dataVencimento)) {
+			
+			vencido = true;
+		}
+		
+		System.out.println(vencido);
+		return vencido;
 	}
 
 	//Converte um Objeto do tipo String para Date.

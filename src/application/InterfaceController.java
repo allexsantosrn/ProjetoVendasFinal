@@ -179,7 +179,7 @@ public class InterfaceController<T> {
 
 	@FXML
 	void btAddItem(ActionEvent event) {
-		
+
 		categorias.clear();
 		carregarCategorias();
 
@@ -372,38 +372,39 @@ public class InterfaceController<T> {
 
 		else {
 
-			PagamentoBoleto formaPagamentoBoleto = new PagamentoBoleto();			
-			
+			PagamentoBoleto formaPagamentoBoleto = new PagamentoBoleto();
+
 			if (formaPagamentoBoleto.checarFundos(actionComprador.retornaCompradorByCPF(cpf), totalCompra)) {
-				
+
 				LocalDate dataPagamento = LocalDate.now();
-				
-				System.out.println(dataPagamento);
-				
+
+				System.out.println("Data de Pagamento: "+dataPagamento);
+
 				LocalDate dataVencimento = dpVencimento.getValue();
-				
-				System.out.println(dataVencimento);
-				
-				if (formaPagamentoBoleto.verificavencimento(dataVencimento, dataPagamento)) {				
-				
-				formaPagamentoBoleto.realizarPagamento(actionVendedor.retornaVendedorByCNPJ(cnpj),
-						actionComprador.retornaCompradorByCPF(cpf), totalCompra);
 
-				Venda venda = new Venda();
-				venda.setComprador(actionComprador.retornaCompradorByCPF(cpf));
-				venda.setVendedor(actionVendedor.retornaVendedorByCNPJ(cnpj));
-				venda.setPagamento(formaPagamentoBoleto);
-
-				actionVenda.adicionarVenda(venda);
-
-				alertaSucesso();
-				clearCamposVenda();
+				System.out.println("Data de Vencimento: "+dataVencimento);				
 				
-				}
-				
-				else {
-					
+				if(formaPagamentoBoleto.isVencido(dataPagamento, dataVencimento)) {
+
 					alertaVencimento();
+
+				}
+
+				else {
+
+					formaPagamentoBoleto.realizarPagamento(actionVendedor.retornaVendedorByCNPJ(cnpj),
+							actionComprador.retornaCompradorByCPF(cpf), totalCompra);
+
+					Venda venda = new Venda();
+					venda.setComprador(actionComprador.retornaCompradorByCPF(cpf));
+					venda.setVendedor(actionVendedor.retornaVendedorByCNPJ(cnpj));
+					venda.setPagamento(formaPagamentoBoleto);
+
+					actionVenda.adicionarVenda(venda);
+
+					alertaSucesso();
+					clearCamposVenda();
+
 				}
 			}
 
@@ -439,7 +440,7 @@ public class InterfaceController<T> {
 		alert.show();
 
 	}
-	
+
 	public void alertaVencimento() {
 
 		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
