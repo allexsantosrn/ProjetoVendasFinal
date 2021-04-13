@@ -109,11 +109,11 @@ public class ConsultaComprador extends Comprador {
 	}
 
 	// Recebe uma compra para adição a listagem de compras do vendedor.
-	/*
-	 * public void adicionarCompra(Comprador comprador, Venda venda) {
-	 * 
-	 * comprador.adicionarCompra(venda); }
-	 */
+
+	public void adicionarCompra(Comprador comprador, Venda venda) {
+
+		comprador.adicionarCompra(venda);
+	}
 
 	public String retornaNomeComprador(String cpf) {
 

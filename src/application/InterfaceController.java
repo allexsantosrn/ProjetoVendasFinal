@@ -323,6 +323,9 @@ public class InterfaceController<T> {
 			venda.setPagamento(formaPagamentoCredito);
 
 			actionVenda.adicionarVenda(venda);
+			
+			actionComprador.adicionarCompra(actionComprador.retornaCompradorByCPF(cpf), venda);
+			actionVendedor.adicionarVenda(actionVendedor.retornaVendedorByCNPJ(cnpj), venda);
 
 			alertaSucesso();
 			clearCamposVenda();
@@ -343,6 +346,9 @@ public class InterfaceController<T> {
 				venda.setPagamento(formaPagamento);
 
 				actionVenda.adicionarVenda(venda);
+				
+				actionComprador.adicionarCompra(actionComprador.retornaCompradorByCPF(cpf), venda);
+				actionVendedor.adicionarVenda(actionVendedor.retornaVendedorByCNPJ(cnpj), venda);
 
 				alertaSucesso();
 				clearCamposVenda();
@@ -371,6 +377,9 @@ public class InterfaceController<T> {
 				venda.setPagamento(formaPagamentoDebito);
 
 				actionVenda.adicionarVenda(venda);
+				
+				actionComprador.adicionarCompra(actionComprador.retornaCompradorByCPF(cpf), venda);
+				actionVendedor.adicionarVenda(actionVendedor.retornaVendedorByCNPJ(cnpj), venda);
 
 				alertaSucesso();
 				clearCamposVenda();
@@ -414,6 +423,9 @@ public class InterfaceController<T> {
 					venda.setPagamento(formaPagamentoBoleto);
 
 					actionVenda.adicionarVenda(venda);
+					
+					actionComprador.adicionarCompra(actionComprador.retornaCompradorByCPF(cpf), venda);
+					actionVendedor.adicionarVenda(actionVendedor.retornaVendedorByCNPJ(cnpj), venda);
 
 					alertaSucesso();
 					clearCamposVenda();
