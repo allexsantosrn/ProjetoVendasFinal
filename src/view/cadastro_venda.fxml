@@ -20,22 +20,27 @@
       <Button layoutX="280.0" layoutY="144.0" mnemonicParsing="false" onAction="#btAddItem" text="Adicionar Item" />
       <Label fx:id="lbStatusProduto" layoutX="8.0" layoutY="148.0" prefHeight="16.0" prefWidth="247.0" />
       <Label layoutX="257.0" layoutY="200.0" text="Total a Pagar:" />
-      <Label fx:id="lbTotalCompra" layoutX="359.0" layoutY="200.0" prefHeight="16.0" prefWidth="100.0" />
+      <Label fx:id="lbTotalCompra" layoutX="348.0" layoutY="200.0" prefHeight="17.0" prefWidth="65.0" />
       <Button layoutX="247.0" layoutY="353.0" mnemonicParsing="false" onAction="#btConfirmarCompra" text="Confirmar Compra" />
       <Button layoutX="82.0" layoutY="353.0" mnemonicParsing="false" onAction="#btVoltarVenda" prefWidth="100.0" text="Voltar" />
       <Label fx:id="lbCPFCompradorVenda" layoutX="460.0" layoutY="36.0" />
       <Label fx:id="lbCNPJVendedorVenda" layoutX="460.0" layoutY="67.0" />
       <Label fx:id="lbCodigoProdutoVenda" layoutX="509.0" layoutY="98.0" />
       <Label layoutX="257.0" layoutY="233.0" text="Itens adicionados:" />
-      <Label fx:id="lbQtdItensAdicionados" layoutX="387.0" layoutY="233.0" prefHeight="16.0" prefWidth="21.0" />
+      <Label fx:id="lbQtdItensAdicionados" layoutX="367.0" layoutY="233.0" prefHeight="17.0" prefWidth="35.0" />
       <ComboBox fx:id="combo" layoutX="340.0" layoutY="270.0" prefWidth="150.0" />
-      <Label layoutX="179.0" layoutY="274.0" text="Forma de Pagamento:" />
-      <Label layoutX="179.0" layoutY="304.0" text="Data de Vencimento:" />
-      <DatePicker fx:id="dpVencimento" layoutX="332.0" layoutY="300.0" />
+      <Label layoutX="212.0" layoutY="274.0" text="Forma de Pagamento:" />
+      <Label layoutX="215.0" layoutY="304.0" text="Data de Vencimento:" />
+      <DatePicker fx:id="dpVencimento" layoutX="342.0" layoutY="300.0" />
       <Label layoutX="8.0" layoutY="184.0" text="Saldo Comprador:" />
       <Label layoutX="8.0" layoutY="208.0" text="Saldo Vendedor:" />
       <Label fx:id="lbSaldoComprador" layoutX="132.0" layoutY="184.0" prefHeight="16.0" prefWidth="50.0" />
       <Label fx:id="lbSaldoVendedor" layoutX="126.0" layoutY="208.0" prefHeight="16.0" prefWidth="56.0" />
       <Button layoutX="420.0" layoutY="353.0" mnemonicParsing="false" onAction="#btReiniciar" text="Reiniciar Compra" />
+      <Label layoutX="8.0" layoutY="233.0" text="Valores a Pagar (Comprador):" />
+      <Label layoutX="6.0" layoutY="262.0" text="Valores a Receber (Vendedor):" />
+      <Label fx:id="lbValoresComprador" layoutX="168.0" layoutY="233.0" prefHeight="17.0" prefWidth="44.0" />
+      <Label fx:id="ldValoresVendedor" layoutX="176.0" layoutY="262.0" prefHeight="17.0" prefWidth="35.0" />
+      <Button layoutX="438.0" layoutY="213.0" mnemonicParsing="false" onAction="#btLimparCarrinho" text="Limpar Carrinho" />
    </children>
 </AnchorPane>

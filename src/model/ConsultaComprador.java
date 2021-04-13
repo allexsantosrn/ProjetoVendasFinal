@@ -175,5 +175,26 @@ public class ConsultaComprador extends Comprador {
 
 		return retorno;
 	}
+	
+	public String retornaValoresPagarComprador(String cpf) {
+
+		String retorno = "Comprador";
+
+		if (hasComprador(cpf)) {
+
+			for (Comprador comprador : compradores) {
+
+				if (comprador.getCpf().equals(cpf)) {
+
+					double valores = comprador.getValoresaPagar();
+					retorno = String.valueOf(valores);
+
+					break;
+				}
+			}
+		}
+
+		return retorno;
+	}
 
 }

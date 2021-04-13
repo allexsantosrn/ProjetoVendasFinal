@@ -177,6 +177,12 @@ public class InterfaceController<T> {
 	private Label lbSaldoVendedor;
 
 	@FXML
+	private Label lbValoresComprador;
+
+	@FXML
+	private Label ldValoresVendedor;
+
+	@FXML
 	private ComboBox<PagamentoTipos> combo;
 
 	private List<PagamentoTipos> categorias = new ArrayList<PagamentoTipos>();
@@ -196,6 +202,8 @@ public class InterfaceController<T> {
 
 		String saldoComprador = actionComprador.retornaSaldoComprador(cpf);
 		String saldoVendedor = actionVendedor.retornaSaldoVendedor(cnpj);
+		String valoresPagar = actionComprador.retornaValoresPagarComprador(cpf);
+		String valoresReceber = actionVendedor.retornaValoresReceberVendedor(cnpj);
 
 		int codigo = Integer.parseInt(codigoProduto);
 
@@ -204,6 +212,7 @@ public class InterfaceController<T> {
 			String nomeComprador = actionComprador.retornaNomeComprador(cpf);
 			lbCPFCompradorVenda.setText(nomeComprador);
 			lbSaldoComprador.setText(saldoComprador);
+			lbValoresComprador.setText(valoresPagar);
 		}
 
 		else {
@@ -216,6 +225,7 @@ public class InterfaceController<T> {
 			String nomeVendedor = actionVendedor.retornaNomeVendedor(cnpj);
 			lbCNPJVendedorVenda.setText(nomeVendedor);
 			lbSaldoVendedor.setText(saldoVendedor);
+			ldValoresVendedor.setText(valoresReceber);
 		}
 
 		else {
@@ -269,7 +279,7 @@ public class InterfaceController<T> {
 
 		else {
 
-			lbStatusProduto.setText("Item não localizado no catÃ¡logo.");
+			lbStatusProduto.setText("Item não localizado no catálogo.");
 
 			Alert alert = new Alert(Alert.AlertType.WARNING);
 			alert.setTitle("Item não localizado");
@@ -323,7 +333,7 @@ public class InterfaceController<T> {
 			venda.setPagamento(formaPagamentoCredito);
 
 			actionVenda.adicionarVenda(venda);
-			
+
 			actionComprador.adicionarCompra(actionComprador.retornaCompradorByCPF(cpf), venda);
 			actionVendedor.adicionarVenda(actionVendedor.retornaVendedorByCNPJ(cnpj), venda);
 
@@ -346,7 +356,7 @@ public class InterfaceController<T> {
 				venda.setPagamento(formaPagamento);
 
 				actionVenda.adicionarVenda(venda);
-				
+
 				actionComprador.adicionarCompra(actionComprador.retornaCompradorByCPF(cpf), venda);
 				actionVendedor.adicionarVenda(actionVendedor.retornaVendedorByCNPJ(cnpj), venda);
 
@@ -357,7 +367,7 @@ public class InterfaceController<T> {
 
 			else {
 
-				alertaNoFunds();				
+				alertaNoFunds();
 			}
 
 		}
@@ -377,7 +387,7 @@ public class InterfaceController<T> {
 				venda.setPagamento(formaPagamentoDebito);
 
 				actionVenda.adicionarVenda(venda);
-				
+
 				actionComprador.adicionarCompra(actionComprador.retornaCompradorByCPF(cpf), venda);
 				actionVendedor.adicionarVenda(actionVendedor.retornaVendedorByCNPJ(cnpj), venda);
 
@@ -390,7 +400,7 @@ public class InterfaceController<T> {
 
 				alertaNoFunds();
 			}
-		}		
+		}
 
 		else {
 
@@ -423,7 +433,7 @@ public class InterfaceController<T> {
 					venda.setPagamento(formaPagamentoBoleto);
 
 					actionVenda.adicionarVenda(venda);
-					
+
 					actionComprador.adicionarCompra(actionComprador.retornaCompradorByCPF(cpf), venda);
 					actionVendedor.adicionarVenda(actionVendedor.retornaVendedorByCNPJ(cnpj), venda);
 
@@ -440,18 +450,31 @@ public class InterfaceController<T> {
 		}
 
 	}
-	
-	 @FXML
-	    void btReiniciar(ActionEvent event) {
-		 
-		 clearCamposVenda();
 
-	    }
-	
+	@FXML
+	void btLimparCarrinho(ActionEvent event) {
+
+		cesta.removerCesta();
+		lbQtdItensAdicionados.setText("");
+		lbTotalCompra.setText("");
+		totalCompra = 0.0;
+		itensAdicionados = 0;
+		lbStatusProduto.setText("");
+		txtQtdProduto.setText("");
+		txtCodigoProduto.setText("");
+
+	}
+
+	@FXML
+	void btReiniciar(ActionEvent event) {
+
+		clearCamposVenda();
+
+	}
 
 	@FXML
 	void btVoltarVenda(ActionEvent event) {
-		
+
 		clearCamposVenda();
 		Main.changedScreen("secundary");
 	}
@@ -483,7 +506,7 @@ public class InterfaceController<T> {
 		alert.setContentText("Boleto vencido. Não é possível realizar pagamento.");
 		alert.show();
 
-	}	
+	}
 
 	public void clearCamposVenda() {
 
@@ -503,10 +526,13 @@ public class InterfaceController<T> {
 		lbCPFCompradorVenda.setText("");
 		lbSaldoComprador.setText("");
 		lbSaldoVendedor.setText("");
+		ldValoresVendedor.setText("");
+		lbValoresComprador.setText("");
+		lbCodigoProdutoVenda.setText("");
 		dpVencimento.setValue(null);
 		combo.getSelectionModel().clearSelection();
 		combo.getItems().clear();
-		categorias.clear();		
+		categorias.clear();
 
 	}
 
