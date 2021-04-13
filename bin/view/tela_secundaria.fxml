@@ -10,7 +10,7 @@
    <children>
       <Button layoutX="215.0" layoutY="176.0" mnemonicParsing="false" onAction="#btConsultaVendedor" prefHeight="24.0" prefWidth="158.0" text="Consultar Vendedor" />
       <Button layoutX="215.0" layoutY="102.0" mnemonicParsing="false" onAction="#btCadastroVenda" prefHeight="24.0" prefWidth="158.0" text="Cadastrar Venda" />
-      <Button layoutX="215.0" layoutY="245.0" mnemonicParsing="false" onAction="#btConsultaComprador" text="Consultar Comprador" />
+      <Button layoutX="215.0" layoutY="245.0" mnemonicParsing="false" onAction="#btConsultaComprador" prefHeight="25.0" prefWidth="158.0" text="Consultar Comprador" />
       <Button layoutX="215.0" layoutY="314.0" mnemonicParsing="false" onAction="#btConsultaProduto" prefHeight="24.0" prefWidth="158.0" text="Consultar Produto" />
       <ToolBar prefHeight="40.0" prefWidth="600.0">
          <items>

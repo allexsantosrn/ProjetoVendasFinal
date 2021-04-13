@@ -34,7 +34,7 @@ public class Main extends Application {
 		searchVendedorScene = new Scene(fxmlDetails2, 640, 400);
 
 		Parent fxmlDetails3 = FXMLLoader.load(getClass().getResource("/view/cadastro_venda.fxml"));
-		salesScene = new Scene(fxmlDetails3, 650, 400);
+		salesScene = new Scene(fxmlDetails3, 640, 400);
 
 		Parent fxmlDetails4 = FXMLLoader.load(getClass().getResource("/view/consulta_comprador.fxml"));
 		searchCompradorScene = new Scene(fxmlDetails4, 640, 400);

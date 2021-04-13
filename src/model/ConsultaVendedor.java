@@ -3,20 +3,17 @@ package model;
 import java.util.Collection;
 import java.util.HashSet;
 
-//import produto.Produto;
-//import venda.Venda;
-//import vendedor.Vendedor;
 
 public class ConsultaVendedor {
 
-	private Collection<Vendedor> vendedores = new HashSet<>(); //Cole√ß√£o de vendedores.
+	private Collection<Vendedor> vendedores = new HashSet<>(); //coleÁ„o de vendedores.
 
-	//Adiciona um vendedor a cole√ß√£o de vendedores.
+	//Adiciona um vendedor a coleÁ„o de vendedores.
 	public void adicionarVendedor(Vendedor vendedor) {
 
 		if (vendedores.contains(vendedor)) {
 			System.out.println("");
-			System.out.println("J√° existe um vendedor com o cnpj informado na base de dados.");
+			System.out.println("J· existe um vendedor com o cnpj informado na base de dados.");
 			System.out.println("");
 		}
 
@@ -45,7 +42,7 @@ public class ConsultaVendedor {
 	}
 
 	//Realiza a consulta de um vendedor.
-	/*
+	
 	public void consultarVendedor(String cnpj) {
 
 		if (hasVendedor(cnpj)) {
@@ -68,7 +65,7 @@ public class ConsultaVendedor {
 			System.out.println("");
 		}
 
-	} */
+	} 
 	
 	
 	//Retorna a listagem de vendedores.
@@ -76,7 +73,7 @@ public class ConsultaVendedor {
 
 		if (vendedores.isEmpty()) {
 			System.out.println("");
-			System.out.println("N√£o h√° registro de vendedores na base de dados.");
+			System.out.println("N„o h· registro de vendedores na base de dados.");
 			System.out.println("");
 		}
 
@@ -110,7 +107,7 @@ public class ConsultaVendedor {
 		return vazio;
 	}
 	
-	//Recebe um CNPJ e um produto para adi√ß√£o ao cat√°logo do vendedor.
+	//Recebe um CNPJ e um produto para adiÁ„o ao cat·logo do vendedor.
 	
 	public void adicionarItemCatalogo(String cnpj, Produto produto) {
 
@@ -118,12 +115,12 @@ public class ConsultaVendedor {
 
 			if (vendedor.getCnpj().equals(cnpj)) {
 				vendedor.adicionarItemCatalogo(produto);
-				System.out.println("Item "+produto.getNome()+ " adicionado ao cat√°logo com sucesso!");
+				System.out.println("Item "+produto.getNome()+ " adicionado ao cat·logo com sucesso!");
 			}
 		}
 	} 
 
-	//Retorna um objeto Vendedor atrav√©s do CNPJ.
+	//Retorna um objeto Vendedor atravÈs do CNPJ.
 	public Vendedor retornaVendedorByCNPJ(String cnpj) {
 
 		Vendedor vendedorx = new Vendedor();
@@ -138,7 +135,7 @@ public class ConsultaVendedor {
 		return vendedorx;
 	}
 	
-	//Retorna true caso o c√≥digo do produto informado exista no cat√°logo do vendedor.
+	//Retorna true caso o cÛdigo do produto informado exista no cat·logo do vendedor.
 	
 	public boolean hasProdutoCatalogo(Vendedor vendedor, int codigo) {
 
@@ -152,12 +149,11 @@ public class ConsultaVendedor {
 		return existe;
 	} 
 	
-	//Recebe uma venda para adi√ß√£o a listagem de vendas do vendedor.
-	/*
+	//Recebe uma venda para adiÁ„o a listagem de vendas do vendedor.	
 	public void adicionarVenda(Vendedor vendedor, Venda venda) {
 
 		vendedor.adicionarVenda(venda);
-	} */
+	} 
 	
 	public String retornaNomeVendedor (String cnpj) {
 		

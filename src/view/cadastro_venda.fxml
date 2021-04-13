@@ -21,7 +21,7 @@
       <Label fx:id="lbStatusProduto" layoutX="8.0" layoutY="148.0" prefHeight="16.0" prefWidth="247.0" />
       <Label layoutX="257.0" layoutY="200.0" text="Total a Pagar:" />
       <Label fx:id="lbTotalCompra" layoutX="359.0" layoutY="200.0" prefHeight="16.0" prefWidth="100.0" />
-      <Button layoutX="233.0" layoutY="353.0" mnemonicParsing="false" onAction="#btConfirmarCompra" text="Confirmar Compra" />
+      <Button layoutX="247.0" layoutY="353.0" mnemonicParsing="false" onAction="#btConfirmarCompra" text="Confirmar Compra" />
       <Button layoutX="82.0" layoutY="353.0" mnemonicParsing="false" onAction="#btVoltarVenda" prefWidth="100.0" text="Voltar" />
       <Label fx:id="lbCPFCompradorVenda" layoutX="460.0" layoutY="36.0" />
       <Label fx:id="lbCNPJVendedorVenda" layoutX="460.0" layoutY="67.0" />

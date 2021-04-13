@@ -1,21 +1,19 @@
 package model;
 
 import java.util.Collection;
-import java.util.HashSet;
 
-//import comprador.Comprador;
-//import venda.Venda;
+import java.util.HashSet;
 
 public class ConsultaComprador extends Comprador {
 
-	private Collection<Comprador> compradores = new HashSet<>(); // ColeÃ§Ã£o de compradores.
+	private Collection<Comprador> compradores = new HashSet<>(); // Coleção de compradores.
 
-	// Adiciona um comprador a coleÃ§Ã£o de compradores.
+	// Adiciona um comprador a coleção de compradores.
 	public void adicionarComprador(Comprador comprador) {
 
 		if (compradores.contains(comprador)) {
 			System.out.println("");
-			System.out.println("JÃ¡ existe um comprador com o cÃ³digo informado na base de dados.");
+			System.out.println("Já existe um comprador com o código informado na base de dados.");
 			System.out.println("");
 		}
 
@@ -44,22 +42,29 @@ public class ConsultaComprador extends Comprador {
 	}
 
 	// Retorna os dados de um comprador.
-	/*
-	 * public void consultarComprador(String cpf) {
-	 * 
-	 * if (hasComprador(cpf)) {
-	 * 
-	 * for (Comprador comprador : compradores) {
-	 * 
-	 * if (comprador.getCpf().equals(cpf)) { System.out.println("");
-	 * System.out.println(comprador); comprador.getCompra(); break; } } }
-	 * 
-	 * else { System.out.println("");
-	 * System.out.println("NÃ£o foram localizados compradores com o CPF informado.");
-	 * System.out.println(""); }
-	 * 
-	 * }
-	 */
+
+	public void consultarComprador(String cpf) {
+
+		if (hasComprador(cpf)) {
+
+			for (Comprador comprador : compradores) {
+
+				if (comprador.getCpf().equals(cpf)) {
+					System.out.println("");
+					System.out.println(comprador);
+					comprador.getCompra();
+					break;
+				}
+			}
+		}
+
+		else {
+			System.out.println("");
+			System.out.println("NÃ£o foram localizados compradores com o CPF informado.");
+			System.out.println("");
+		}
+
+	}
 
 	// Retorna a listagem de todos os compradores.
 	public void listarCompradores() {
@@ -103,7 +108,7 @@ public class ConsultaComprador extends Comprador {
 		return compradorx;
 	}
 
-	// Recebe uma compra para adiÃ§Ã£o a listagem de compras do vendedor.
+	// Recebe uma compra para adição a listagem de compras do vendedor.
 	/*
 	 * public void adicionarCompra(Comprador comprador, Venda venda) {
 	 * 
@@ -130,7 +135,6 @@ public class ConsultaComprador extends Comprador {
 		return retorno;
 	}
 
-	
 	public String retornaCPFComprador(String cpf) {
 
 		String retorno = "Comprador";
@@ -170,6 +174,6 @@ public class ConsultaComprador extends Comprador {
 		}
 
 		return retorno;
-	} 
+	}
 
 }

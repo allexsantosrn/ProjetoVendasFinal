@@ -1,4 +1,4 @@
-module ProjetoVendasFinal {
+module Teste {
 	requires javafx.controls;
 	requires javafx.fxml;
 	

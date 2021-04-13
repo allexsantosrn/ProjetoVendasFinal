@@ -65,15 +65,15 @@ public class InterfaceController<T> {
 	public void initData() {
 
 		// Criando vendedores
-		Vendedor vendedor1 = new Vendedor("1", "Miranda Computa√ß√£o", 10000);
-		Vendedor vendedor2 = new Vendedor("2", "Kabum Inform√°tica", 25000);
-		Vendedor vendedor3 = new Vendedor("3", "Pichau Inform√°tica", 18000);
+		Vendedor vendedor1 = new Vendedor("1", "Miranda ComputaÁ„o", 10000);
+		Vendedor vendedor2 = new Vendedor("2", "Kabum Inform·tica", 25000);
+		Vendedor vendedor3 = new Vendedor("3", "Pichau Inform·tica", 18000);
 		actionVendedor.adicionarVendedor(vendedor1);
 		actionVendedor.adicionarVendedor(vendedor2);
 		actionVendedor.adicionarVendedor(vendedor3);
 
 		// Criando compradores
-		Comprador comprador1 = new Comprador("1", "Rom√°rio Faria", 800);
+		Comprador comprador1 = new Comprador("1", "Rom·rio Faria", 800);
 		Comprador comprador2 = new Comprador("2", "Ronaldo Nazario", 250);
 		Comprador comprador3 = new Comprador("3", "Neymar Jr", 180);
 		actionComprador.adicionarComprador(comprador1);
@@ -82,7 +82,7 @@ public class InterfaceController<T> {
 
 		// Criando produtos
 		Produto produto1 = new Produto(1, "HD SSD Toshiba", 150);
-		Produto produto2 = new Produto(2, "Mem√≥ria RAM Kingston", 100);
+		Produto produto2 = new Produto(2, "MemÛria RAM Kingston", 100);
 		Produto produto3 = new Produto(3, "Pen Drive 4GB", 15);
 		actionProduto.adicionarProduto(produto1);
 		actionProduto.adicionarProduto(produto2);
@@ -121,7 +121,7 @@ public class InterfaceController<T> {
 		else {
 
 			clearCamposVendedor();
-			lbVendedor.setText("Vendedor n√£o localizado!");
+			lbVendedor.setText("Vendedor n„o localizado!");
 		}
 
 	}
@@ -208,7 +208,7 @@ public class InterfaceController<T> {
 
 		else {
 
-			lbCPFCompradorVenda.setText("Comprador n√£o localizado");
+			lbCPFCompradorVenda.setText("Comprador n„o localizado");
 		}
 
 		if (actionVendedor.hasVendedor(cnpj)) {
@@ -220,7 +220,7 @@ public class InterfaceController<T> {
 
 		else {
 
-			lbCNPJVendedorVenda.setText("Vendedor n√£o localizado");
+			lbCNPJVendedorVenda.setText("Vendedor n„o localizado");
 		}
 
 		if (actionProduto.hasProduto(codigo)) {
@@ -231,17 +231,17 @@ public class InterfaceController<T> {
 
 		else {
 
-			lbCodigoProdutoVenda.setText("Item n√£o localizado");
+			lbCodigoProdutoVenda.setText("Item n„o localizado");
 		}
 
 		if (cesta.hasItemCesta(actionProduto.retornaProdutoByCodigo(codigo))) {
 
-			lbStatusProduto.setText("Item j√° adicionado √† compra.");
+			lbStatusProduto.setText("Item j· adicionado ‡ compra.");
 
 			Alert alert = new Alert(Alert.AlertType.WARNING);
-			alert.setTitle("Item adicionado √† compra");
-			alert.setHeaderText("Item j√° adicionado √† compra");
-			alert.setContentText("O item selecionado j√° foi adicionado √† compra.");
+			alert.setTitle("Item adicionado ‡ compra");
+			alert.setHeaderText("Item j· adicionado ‡ compra");
+			alert.setContentText("O item selecionado j· foi adicionado ‡ compra.");
 			alert.show();
 
 		}
@@ -269,12 +269,12 @@ public class InterfaceController<T> {
 
 		else {
 
-			lbStatusProduto.setText("Item n√£o localizado no cat√°logo.");
+			lbStatusProduto.setText("Item n„o localizado no cat√°logo.");
 
 			Alert alert = new Alert(Alert.AlertType.WARNING);
-			alert.setTitle("Item n√£o localizado");
-			alert.setHeaderText("Item n√£o localizado");
-			alert.setContentText("Item n√£o localizado no cat√°logo do vendedor selecionado.");
+			alert.setTitle("Item n„o localizado");
+			alert.setHeaderText("Item n„o localizado");
+			alert.setContentText("Item n„o localizado no cat·logo do vendedor selecionado.");
 			alert.show();
 		}
 
@@ -295,18 +295,18 @@ public class InterfaceController<T> {
 		if (!actionComprador.hasComprador(cpf)) {
 
 			Alert alert = new Alert(Alert.AlertType.ERROR);
-			alert.setTitle("Comprador n√£o localizado");
-			alert.setHeaderText("Comprador n√£o localizado");
-			alert.setContentText("N√£o foram localizados compradores com o CPF informado.");
+			alert.setTitle("Comprador n„o localizado");
+			alert.setHeaderText("Comprador n„o localizado");
+			alert.setContentText("N„o foram localizados compradores com o CPF informado.");
 			alert.show();
 		}
 
 		else if (!actionVendedor.hasVendedor(cnpj)) {
 
 			Alert alert = new Alert(Alert.AlertType.ERROR);
-			alert.setTitle("Vendedor n√£o localizado");
-			alert.setHeaderText("Vendedor n√£o localizado");
-			alert.setContentText("N√£o foram localizados vendedores com o CNPJ informado.");
+			alert.setTitle("Vendedor n„o localizado");
+			alert.setHeaderText("Vendedor n„o localizado");
+			alert.setContentText("N„o foram localizados vendedores com o CNPJ informado.");
 			alert.show();
 		}
 
@@ -447,9 +447,9 @@ public class InterfaceController<T> {
 	public void alertaNoFunds() {
 
 		Alert alert = new Alert(Alert.AlertType.ERROR);
-		alert.setTitle("N√£o h√° fundos");
-		alert.setHeaderText("N√°o h√° recursos dispon√≠veis");
-		alert.setContentText("N√£o h√° fundos suficientes para realiza√ß√£o da compra.");
+		alert.setTitle("N„o h· fundos");
+		alert.setHeaderText("N„o h· recursos disponÌveis");
+		alert.setContentText("N„o h· fundos suficientes para realizaÁ„o da compra.");
 		alert.show();
 	}
 
@@ -467,8 +467,8 @@ public class InterfaceController<T> {
 
 		Alert alert = new Alert(Alert.AlertType.ERROR);
 		alert.setTitle("Boleto vencido");
-		alert.setHeaderText("Pagamento al√©m da data de vencimento");
-		alert.setContentText("Boleto vencido. N√£o √© poss√≠vel realizar pagamento.");
+		alert.setHeaderText("Pagamento alÈm da data de vencimento");
+		alert.setContentText("Boleto vencido. N„o È possÌvel realizar pagamento.");
 		alert.show();
 
 	}	
@@ -550,7 +550,7 @@ public class InterfaceController<T> {
 		else {
 
 			clearCamposComprador();
-			lbComprador.setText("Comprador n√£o localizado!");
+			lbComprador.setText("Comprador n„o localizado!");
 		}
 	}
 
@@ -599,15 +599,15 @@ public class InterfaceController<T> {
 			String valor = actionProduto.retornaPrecoProduto(codigo2);
 
 			lbProduto.setText("Produto localizado!");
-			lbProdutoCodigo.setText("C√≥digo: " + codigofinal);
+			lbProdutoCodigo.setText("CÛdigo: " + codigofinal);
 			lbProdutoNome.setText("Nome: " + nome);
-			lbProdutoValor.setText("Pre√ßo Unit√°rio: " + valor);
+			lbProdutoValor.setText("PreÁo Unit·rio: " + valor);
 		}
 
 		else {
 
 			clearCamposProduto();
-			lbProduto.setText("Comprador n√£o localizado!");
+			lbProduto.setText("Comprador n„o localizado!");
 		}
 	}
 
