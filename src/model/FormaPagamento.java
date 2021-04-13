@@ -12,8 +12,8 @@ public abstract class FormaPagamento {
 	private String tipoPagamento;
 	private Date dataPagamento;
 
-	protected final double taxaOperadora = 0.02; //Taxa da operadora de cart√£o: 2% de Juros
-	protected final double valorEmissaoBoleto = 1.00; //Taxa de emiss√£o do boleto: R$ 1,00 de taxa.
+	protected final double taxaOperadora = 0.02; //Taxa da operadora de cart„o: 2% de Juros
+	protected final double valorEmissaoBoleto = 1.00; //Taxa de emiss„o do boleto: R$ 1,00 de taxa.
 
 	protected static final DateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
 	
@@ -45,10 +45,10 @@ public abstract class FormaPagamento {
 		this.dataPagamento = formatador.parse(dataPagamento);
 	}
 	
-	//M√©todo de realizar pagamento.
+	//MÈtodo de realizar pagamento.
 	public abstract void realizarPagamento(Vendedor vendedor, Comprador comprador, double valorCompra);	
 
-	//Returna true caso o comprador tenha fundos para realiza√ß√£o da compra.
+	//Returna true caso o comprador tenha fundos para realizaÁ„o da compra.
 	public boolean checarFundos(Comprador comprador, double valorCompra) {
 
 		boolean hasFundos = false;

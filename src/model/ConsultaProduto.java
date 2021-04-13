@@ -7,12 +7,12 @@ public class ConsultaProduto {
 
 	private Collection<Produto> produtos = new HashSet<>();
 
-	// Adiciona um produto a cole√ß√£o de produtos.
+	// Adiciona um produto a coleÁ„o de produtos.
 	public void adicionarProduto(Produto produto) {
 
 		if (produtos.contains(produto)) {
 			System.out.println("");
-			System.out.println("J√° existe um produto com o c√≥digo informado na base de dados.");
+			System.out.println("J√° existe um produto com o cÛdigo informado na base de dados.");
 			System.out.println("");
 		}
 
@@ -58,7 +58,7 @@ public class ConsultaProduto {
 
 		else {
 			System.out.println("");
-			System.out.println("N√£o foram localizados produtos com o c√≥digo informado.");
+			System.out.println("N„o foram localizados produtos com o cÛdigo informado.");
 			System.out.println("");
 		}
 
@@ -69,7 +69,7 @@ public class ConsultaProduto {
 
 		if (produtos.isEmpty()) {
 			System.out.println("");
-			System.out.println("N√£o h√° registro de produtos na base de dados.");
+			System.out.println("N„o h· registro de produtos na base de dados.");
 			System.out.println("");
 		}
 
@@ -80,8 +80,8 @@ public class ConsultaProduto {
 
 			for (Produto produto : produtos) {
 
-				System.out.println("Produto" + "[" + i + "] -" + " C√≥digo: " + produto.getCodigo() + " - Nome: "
-						+ produto.getNome() + " - Pre√ßo Unit√°rio: " + produto.getPrecoUnitario());
+				System.out.println("Produto" + "[" + i + "] -" + " CÛdigo: " + produto.getCodigo() + " - Nome: "
+						+ produto.getNome() + " - PreÁo Unit·rio: " + produto.getPrecoUnitario());
 				i++;
 			}
 
@@ -91,7 +91,7 @@ public class ConsultaProduto {
 
 	}
 
-	// Retorna o objeto produto pelo seu c√≥digo
+	// Retorna o objeto produto pelo seu cÛdigo
 	public Produto retornaProdutoByCodigo(int codigo) {
 
 		Produto produtox = new Produto();

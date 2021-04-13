@@ -7,19 +7,19 @@ public class ConsultaVenda {
 	
 	private Collection<Venda> vendas = new HashSet<>();
 
-	//Adiciona uma venda a coleÃ§Ã£o de vendas.
+	//Adiciona uma venda a coleção de vendas.
 	public void adicionarVenda(Venda venda) {
 
 		vendas.add(venda);
 	}
 
-		/*
+		
 	//Realiza a listagem de vendas.
 	public void listarVendas() {
 
 		if (vendas.isEmpty()) {
 			System.out.println("");
-			System.out.println("NÃ£o hÃ¡ registro de vendas na base de dados.");
+			System.out.println("Não há registro de vendas na base de dados.");
 			System.out.println("");
 		}
 
@@ -43,7 +43,7 @@ public class ConsultaVenda {
 
 		}
 
-	}*/
+	}
 	
 	//Returna true caso a lista de vendedores seja vazia.
 	public boolean listaVendedoresIsEmpty() {

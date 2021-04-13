@@ -18,7 +18,7 @@ public class Cesta {
 		if (itens.contains(produto)) {
 			existe = true;
 			System.out.println("");
-			System.out.println("Já existe um produto com o código informado nesta compra.");
+			System.out.println("Já existe um produto com o c�digo informado nesta compra.");
 			System.out.println("");
 		}
 		

@@ -6,7 +6,7 @@ import java.util.HashSet;
 
 public class ConsultaVendedor {
 
-	private Collection<Vendedor> vendedores = new HashSet<>(); //coleção de vendedores.
+	private Collection<Vendedor> vendedores = new HashSet<>(); //Coleção de vendedores.
 
 	//Adiciona um vendedor a coleção de vendedores.
 	public void adicionarVendedor(Vendedor vendedor) {

@@ -1,29 +1,29 @@
 package model;
 
-public class FormaPagamentoPIX extends FormaPagamento{
-	
-	//M√©todo que realiza o pagamento por PIX.
-	
-		public void realizarPagamento(Vendedor vendedor, Comprador comprador, double valorCompra) {
+public class FormaPagamentoPIX extends FormaPagamento {
 
-			if (checarFundos(comprador, valorCompra)) {
+	// MÈtodo que realiza o pagamento por PIX.
 
-				comprador.debitaSaldoComprador(valorCompra);
-				comprador.incrementaComprasRealizadas();
+	public void realizarPagamento(Vendedor vendedor, Comprador comprador, double valorCompra) {
 
-				vendedor.incrementaSaldoVendedor(valorCompra);
-				vendedor.incrementaVendasRealizadas();				
-				
-				System.out.println("Pagamento realizado com sucesso.");
-				System.out.println("");
-			}
+		if (checarFundos(comprador, valorCompra)) {
 
-			else {
+			comprador.debitaSaldoComprador(valorCompra);
+			comprador.incrementaComprasRealizadas();
 
-				System.out.println("O comprador n√£o possui fundos para realiza√ß√£o da compra.");
-				System.out.println("");
-			}
+			vendedor.incrementaSaldoVendedor(valorCompra);
+			vendedor.incrementaVendasRealizadas();
 
+			System.out.println("Pagamento realizado com sucesso.");
+			System.out.println("");
 		}
+
+		else {
+
+			System.out.println("O comprador n„o possui fundos para realizaÁ„o da compra.");
+			System.out.println("");
+		}
+
+	}
 
 }

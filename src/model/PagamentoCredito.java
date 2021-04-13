@@ -2,7 +2,7 @@ package model;
 
 public class PagamentoCredito extends FormaPagamento {
 
-	//M√©todo que realiza o pagamento por cart√£o de cr√©dito.
+	//MÈtodo que realiza o pagamento por cart„o de crÈdito.
 	public void realizarPagamento(Vendedor vendedor, Comprador comprador, double valorCompra) {
 
 		double creditoVendedor = valorCompra - (valorCompra * this.taxaOperadora);

@@ -60,7 +60,7 @@ public class ConsultaComprador extends Comprador {
 
 		else {
 			System.out.println("");
-			System.out.println("N√£o foram localizados compradores com o CPF informado.");
+			System.out.println("N„o foram localizados compradores com o CPF informado.");
 			System.out.println("");
 		}
 
@@ -71,7 +71,7 @@ public class ConsultaComprador extends Comprador {
 
 		if (compradores.isEmpty()) {
 			System.out.println("");
-			System.out.println("N√£o h√° registro de compradores na base de dados.");
+			System.out.println("N„o h· registro de compradores na base de dados.");
 			System.out.println("");
 		}
 

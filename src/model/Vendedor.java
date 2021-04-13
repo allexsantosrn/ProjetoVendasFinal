@@ -70,7 +70,7 @@ public class Vendedor {
 		this.qtdvendasRealizadas = qtdvendasRealizadas;
 	}
 
-	// Adiciona um produto ao cat√°logo do vendedor.
+	// Adiciona um produto ao cat·logo do vendedor.
 	public void adicionarItemCatalogo(Produto produto) {
 		catalogo.add(produto);
 	}
@@ -94,7 +94,7 @@ public class Vendedor {
 		this.saldo = this.saldo + valor;
 	}
 
-	// Incrementa o n√∫mero de vendas realizadas pelo vendedor.
+	// Incrementa o n˙mero de vendas realizadas pelo vendedor.
 	public void incrementaVendasRealizadas() {
 		this.qtdvendasRealizadas = this.qtdvendasRealizadas + 1;
 	}
@@ -104,7 +104,7 @@ public class Vendedor {
 		this.valoresReceber = this.valoresReceber + valor;
 	}
 
-	// Retorna true caso o produto exista no cat√°logo do vendedor.
+	// Retorna true caso o produto exista no cat·logo do vendedor.
 	public boolean hasProdutoCatalogo(int codigo) {
 
 		boolean existe = false;

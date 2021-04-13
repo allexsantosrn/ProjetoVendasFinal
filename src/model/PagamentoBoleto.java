@@ -11,12 +11,12 @@ public class PagamentoBoleto extends FormaPagamento{
 		return dataVencimento;
 	}
 	
-	//M√©todo que converte a data de vencimento de String para Date.
+	//MÈtodo que converte a data de vencimento de String para Date.
 	public void setDataVencimento(String dataVencimento) throws ParseException {
 		this.dataVencimento = formatador.parse(dataVencimento);
 	}
 	
-	//M√©todo que realiza o pagamento por boleto banc√°rio.
+	//MÈtodo que realiza o pagamento por boleto banc·rio.
 	public void realizarPagamento(Vendedor vendedor, Comprador comprador, double valorCompra)	 {
 
 		/*
@@ -37,7 +37,7 @@ public class PagamentoBoleto extends FormaPagamento{
 
 		if (!checarFundos(comprador, valorCompra)) {
 
-			System.out.println("O comprador n√£o possui fundos para realiza√ß√£o da compra.");
+			System.out.println("O comprador n„o possui fundos para realizaÁ„o da compra.");
 			System.out.println("");
 		}
 		

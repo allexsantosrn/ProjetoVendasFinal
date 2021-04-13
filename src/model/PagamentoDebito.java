@@ -2,7 +2,7 @@ package model;
 
 public class PagamentoDebito extends FormaPagamento {
 
-	//M√©todo que realiza o pagamento por d√©bito.
+	//MÈtodo que realiza o pagamento por dÈbito.
 	public void realizarPagamento(Vendedor vendedor, Comprador comprador, double valorCompra) {
 
 		if (checarFundos(comprador, valorCompra)) {
@@ -20,7 +20,7 @@ public class PagamentoDebito extends FormaPagamento {
 
 		} else {
 
-			System.out.println("O comprador n√£o possui fundos para realiza√ß√£o da compra.");
+			System.out.println("O comprador n„o possui fundos para realizaÁ„ da compra.");
 			System.out.println("");
 		}
 

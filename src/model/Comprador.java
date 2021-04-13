@@ -11,9 +11,9 @@ public class Comprador {
 	private String nome; //Nome do comprador.
 	private double saldo; //Saldo do comprador.
 	private double valoresaPagar = 0; //Total de valores a pagar do comprador.
-	private int qtdcomprasRealizadas = 0; //NÃºmero de compras realizadas pelo comprador.
+	private int qtdcomprasRealizadas = 0; //Número de compras realizadas pelo comprador.
 
-	private Collection<Venda> compras = new HashSet<>(); //ColeÃ§Ã£o de compras do comprador.
+	private Collection<Venda> compras = new HashSet<>(); //Coleção de compras do comprador.
 
 	private static final DateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
 	

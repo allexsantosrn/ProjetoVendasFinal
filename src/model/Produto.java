@@ -42,7 +42,7 @@ public class Produto {
 
 	@Override
 	public String toString() {
-		return "C√≥digo: " + this.codigo + "\nNome: " + this.nome + "\nPre√ßo Unit√°rio: " + this.precoUnitario;
+		return "CÛdigo: " + this.codigo + "\nNome: " + this.nome + "\nPreÁo Unit·rio: " + this.precoUnitario;
 	}
 
 	@Override
