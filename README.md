@@ -47,7 +47,7 @@ Segue checklist de itens cumpridos de acordo com o checklist estabelecido dos re
 - Utilize pelo menos uma annotation de marcação. (Foi utilizado o @Override no método realizarPagamento das classes concretas filhas da classe abstrata: FormaPagamento. Além disso, na classe abstrata: FormaPagamento foi adicionada a 
 annotation @Deprecated para alguns métodos que eram utilizados nos objetos do tipo Date - Esses objetos foram convertidos no tipo LocalDate).
 
-O link do repositório do projeto é este: https://github.com/allexsantosrn/Projeto-Vendas.
+O link do repositório do projeto é este: https://github.com/allexsantosrn/ProjetoVendasFinal.
 
 
 
