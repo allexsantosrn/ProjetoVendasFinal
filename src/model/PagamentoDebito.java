@@ -5,6 +5,7 @@ import java.time.LocalDate;
 public class PagamentoDebito extends FormaPagamento {
 
 	//Método que realiza o pagamento por débito.
+	@Override	
 	public void realizarPagamento(Vendedor vendedor, Comprador comprador, double valorCompra, LocalDate dataPagamento) {
 
 		if (checarFundos(comprador, valorCompra)) {

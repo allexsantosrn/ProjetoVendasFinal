@@ -17,6 +17,7 @@ public class PagamentoBoleto extends FormaPagamento{
 	} */
 	
 	//Método que realiza o pagamento por boleto bancário.
+	@Override	
 	public void realizarPagamento(Vendedor vendedor, Comprador comprador, double valorCompra, LocalDate dataPagamento)	 {
 
 		/*

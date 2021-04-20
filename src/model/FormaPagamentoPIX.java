@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class FormaPagamentoPIX extends FormaPagamento {
 
 	// Método que realiza o pagamento por PIX.
-
+	@Override
 	public void realizarPagamento(Vendedor vendedor, Comprador comprador, double valorCompra, LocalDate dataPagamento) {
 
 		if (checarFundos(comprador, valorCompra)) {
