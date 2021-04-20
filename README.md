@@ -88,7 +88,7 @@ No registro do pagamento é possível realizar os seguintes tipos de pagamento:
 
 OBS: Em todas as formas de pagamento, será considerada a data atual como data de pagamento.
 
-Na realização da venda, alguns regras de negócio foram adicionadas (Com opções de alertas sendo exibidos para o usuários):
+Na realização da venda, alguns regras de negócio foram adicionadas (Com opções de alertas sendo exibidos para o usuário):
 
 - O usuário não poderá adicionar o produto mais de uma vez, durante sua compra;
 - Caso o produto não esteja no catálogo do vendedor selecionado, será exibida uma mensagem de alerta.
