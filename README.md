@@ -88,11 +88,13 @@ No registro do pagamento é possível realizar os seguintes tipos de pagamento:
 
 OBS: Em todas as formas de pagamento, será considerada a data atual como data de pagamento.
 
-Na realização da venda, alguns regras de negócio foram adicionadas (Com opções de alertas sendo exibidos para o usuário)s:
+Na realização da venda, alguns regras de negócio foram adicionadas (Com opções de alertas sendo exibidos para o usuários):
 
 - O usuário não poderá adicionar o produto mais de uma vez, durante sua compra;
 - Caso o produto não esteja no catálogo do vendedor selecionado, será exibida uma mensagem de alerta.
 - Caso o boleto esteja vencido, não será possível realizar seu pagamento.
 - Caso o usuário não possua saldo suficiente não será possível realizar um pagamento.
 
-A interface de venda também permite a visualização das informações do comprador, vendedor e produto em tela, incluindo aí os valores de saldo atualizados do vendedor e comprador.
+A interface de venda também permite a visualização das informações do comprador, vendedor e produto em tela, incluindo aí os valores de saldo atualizados do vendedor e comprador. 
+
+Foram desenvolvidos também o botão de voltar, em cada tela. Na venda, também foram adicionadas as opções de reiniciar compra, limpar carrinho e de adicionar itens ao carrinho de compras.
