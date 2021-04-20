@@ -59,12 +59,11 @@ public class InterfaceController<T> {
 	public void initialize() {
 
 		initData();
-
 	}
 
 	public void initData() {
 
-		// Criando vendedores
+		// Criando vendedores /*
 		Vendedor vendedor1 = new Vendedor("1", "Miranda Computação", 10000);
 		Vendedor vendedor2 = new Vendedor("2", "Kabum Informática", 25000);
 		Vendedor vendedor3 = new Vendedor("3", "Pichau Informática", 18000);
@@ -82,15 +81,35 @@ public class InterfaceController<T> {
 
 		// Criando produtos
 		Produto produto1 = new Produto(1, "HD SSD Toshiba", 150);
-		Produto produto2 = new Produto(2, "Memória RAM Kingston", 100);
+		Produto produto2 = new Produto(2, "Memória RAM 2GB", 100);
 		Produto produto3 = new Produto(3, "Pen Drive 4GB", 15);
+		Produto produto4 = new Produto(4, "Joystick PS4", 270);
+		Produto produto5 = new Produto(5, "Joystick XBOX", 450);
+		Produto produto6 = new Produto(6, "Placa Mãe ASUS", 300);
+		Produto produto7 = new Produto(7, "Mouse Gamer Pichau", 190);
+		Produto produto8 = new Produto(8, "Gabinete Gamer", 370);
+		Produto produto9 = new Produto(9, "HeadSet Gamer", 80);
+
 		actionProduto.adicionarProduto(produto1);
 		actionProduto.adicionarProduto(produto2);
 		actionProduto.adicionarProduto(produto3);
+		actionProduto.adicionarProduto(produto4);
+		actionProduto.adicionarProduto(produto5);
+		actionProduto.adicionarProduto(produto6);
+		actionProduto.adicionarProduto(produto7);
+		actionProduto.adicionarProduto(produto8);
+		actionProduto.adicionarProduto(produto9);
 
 		actionVendedor.adicionarItemCatalogo("1", produto1);
-		actionVendedor.adicionarItemCatalogo("2", produto2);
-		actionVendedor.adicionarItemCatalogo("3", produto3);
+		actionVendedor.adicionarItemCatalogo("1", produto2);
+		actionVendedor.adicionarItemCatalogo("1", produto3);
+		actionVendedor.adicionarItemCatalogo("2", produto4);
+		actionVendedor.adicionarItemCatalogo("2", produto5);
+		actionVendedor.adicionarItemCatalogo("2", produto6);
+		actionVendedor.adicionarItemCatalogo("3", produto7);
+		actionVendedor.adicionarItemCatalogo("3", produto8);
+		actionVendedor.adicionarItemCatalogo("3", produto9);
+
 	}
 
 	public void clearCamposVendedor() {
@@ -300,6 +319,8 @@ public class InterfaceController<T> {
 
 		String tipoPagamento = categoria.getFormaPagamento().getDescricao();
 
+		LocalDate dataVencimento = dpVencimento.getValue();
+
 		System.out.println("Tipo de Pagamento selecionado: " + tipoPagamento);
 
 		if (!actionComprador.hasComprador(cpf)) {
@@ -325,7 +346,7 @@ public class InterfaceController<T> {
 			PagamentoCredito formaPagamentoCredito = new PagamentoCredito();
 
 			formaPagamentoCredito.realizarPagamento(actionVendedor.retornaVendedorByCNPJ(cnpj),
-					actionComprador.retornaCompradorByCPF(cpf), totalCompra);
+					actionComprador.retornaCompradorByCPF(cpf), totalCompra, dataVencimento);
 
 			Venda venda = new Venda();
 			venda.setComprador(actionComprador.retornaCompradorByCPF(cpf));
@@ -348,7 +369,7 @@ public class InterfaceController<T> {
 			if (formaPagamento.checarFundos(actionComprador.retornaCompradorByCPF(cpf), totalCompra)) {
 
 				formaPagamento.realizarPagamento(actionVendedor.retornaVendedorByCNPJ(cnpj),
-						actionComprador.retornaCompradorByCPF(cpf), totalCompra);
+						actionComprador.retornaCompradorByCPF(cpf), totalCompra, dataVencimento);
 
 				Venda venda = new Venda();
 				venda.setComprador(actionComprador.retornaCompradorByCPF(cpf));
@@ -379,7 +400,7 @@ public class InterfaceController<T> {
 			if (formaPagamentoDebito.checarFundos(actionComprador.retornaCompradorByCPF(cpf), totalCompra)) {
 
 				formaPagamentoDebito.realizarPagamento(actionVendedor.retornaVendedorByCNPJ(cnpj),
-						actionComprador.retornaCompradorByCPF(cpf), totalCompra);
+						actionComprador.retornaCompradorByCPF(cpf), totalCompra, dataVencimento);
 
 				Venda venda = new Venda();
 				venda.setComprador(actionComprador.retornaCompradorByCPF(cpf));
@@ -412,8 +433,6 @@ public class InterfaceController<T> {
 
 				System.out.println("Data de Pagamento: " + dataPagamento);
 
-				LocalDate dataVencimento = dpVencimento.getValue();
-
 				System.out.println("Data de Vencimento: " + dataVencimento);
 
 				if (formaPagamentoBoleto.isVencido(dataPagamento, dataVencimento)) {
@@ -425,7 +444,7 @@ public class InterfaceController<T> {
 				else {
 
 					formaPagamentoBoleto.realizarPagamento(actionVendedor.retornaVendedorByCNPJ(cnpj),
-							actionComprador.retornaCompradorByCPF(cpf), totalCompra);
+							actionComprador.retornaCompradorByCPF(cpf), totalCompra, dataVencimento);
 
 					Venda venda = new Venda();
 					venda.setComprador(actionComprador.retornaCompradorByCPF(cpf));

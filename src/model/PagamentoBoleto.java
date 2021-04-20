@@ -1,10 +1,10 @@
 package model;
 
-import java.text.ParseException;
-import java.util.Date;
+import java.time.LocalDate;
 
 public class PagamentoBoleto extends FormaPagamento{
 	
+	/*
 	private Date dataVencimento;
 	
 	public Date getDataVencimento() {
@@ -14,10 +14,10 @@ public class PagamentoBoleto extends FormaPagamento{
 	//Método que converte a data de vencimento de String para Date.
 	public void setDataVencimento(String dataVencimento) throws ParseException {
 		this.dataVencimento = formatador.parse(dataVencimento);
-	}
+	} */
 	
 	//Método que realiza o pagamento por boleto bancário.
-	public void realizarPagamento(Vendedor vendedor, Comprador comprador, double valorCompra)	 {
+	public void realizarPagamento(Vendedor vendedor, Comprador comprador, double valorCompra, LocalDate dataPagamento)	 {
 
 		/*
 		Date dataVencimentoConvertida = null;
@@ -35,11 +35,12 @@ public class PagamentoBoleto extends FormaPagamento{
 			e.printStackTrace();
 		} */
 
+		/*
 		if (!checarFundos(comprador, valorCompra)) {
 
 			System.out.println("O comprador não possui fundos para realização da compra.");
 			System.out.println("");
-		}
+		} */
 		
 		/*
 		else if (!verificavencimento(dataVencimentoConvertida, dataPagamentoConvertida)) {
@@ -49,7 +50,7 @@ public class PagamentoBoleto extends FormaPagamento{
 			System.out.println("");
 		} */
 
-		else {
+		//else {
 
 			double creditoVendedor = valorCompra - valorEmissaoBoleto;
 			comprador.debitaSaldoComprador(valorCompra);
@@ -61,7 +62,7 @@ public class PagamentoBoleto extends FormaPagamento{
 			System.out.println("Pagamento realizado com sucesso.");
 			System.out.println("");
 
-		}
+		//}
 
 	}
 	

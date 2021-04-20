@@ -38,9 +38,9 @@
       <Label fx:id="lbSaldoVendedor" layoutX="126.0" layoutY="208.0" prefHeight="16.0" prefWidth="56.0" />
       <Button layoutX="420.0" layoutY="353.0" mnemonicParsing="false" onAction="#btReiniciar" text="Reiniciar Compra" />
       <Label layoutX="8.0" layoutY="233.0" text="Valores a Pagar (Comprador):" />
-      <Label layoutX="6.0" layoutY="262.0" text="Valores a Receber (Vendedor):" />
+      <Label layoutX="6.0" layoutY="254.0" text="Valores a Receber (Vendedor):" />
       <Label fx:id="lbValoresComprador" layoutX="168.0" layoutY="233.0" prefHeight="17.0" prefWidth="44.0" />
-      <Label fx:id="ldValoresVendedor" layoutX="176.0" layoutY="262.0" prefHeight="17.0" prefWidth="35.0" />
+      <Label fx:id="ldValoresVendedor" layoutX="173.0" layoutY="254.0" prefHeight="17.0" prefWidth="35.0" />
       <Button layoutX="438.0" layoutY="213.0" mnemonicParsing="false" onAction="#btLimparCarrinho" text="Limpar Carrinho" />
    </children>
 </AnchorPane>

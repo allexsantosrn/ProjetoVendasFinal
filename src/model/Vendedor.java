@@ -76,7 +76,6 @@ public class Vendedor {
 	}
 
 	// Exibe o catálogo de itens do vendedor.
-
 	public void getProdutosCatalogo() {
 		int i = 1;
 		System.out.println("");

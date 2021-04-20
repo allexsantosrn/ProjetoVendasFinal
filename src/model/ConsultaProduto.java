@@ -12,15 +12,15 @@ public class ConsultaProduto {
 
 		if (produtos.contains(produto)) {
 			System.out.println("");
-			System.out.println("JÃ¡ existe um produto com o código informado na base de dados.");
+			System.out.println("Já existe um produto com o código informado na base de dados.");
 			System.out.println("");
 		}
 
 		else {
 			produtos.add(produto);
-			System.out.println("");
-			System.out.println("Produto cadastrado com sucesso.");
-			System.out.println("");
+			//System.out.println("");
+			System.out.println("Produto "+produto.getNome()+" de código: "+produto.getCodigo()+" cadastrado com sucesso.");
+			//System.out.println("");
 		}
 
 	}
@@ -40,7 +40,7 @@ public class ConsultaProduto {
 		return existe;
 	}
 
-	// Realiza a consulta do produto pelo cÃ³digo
+	// Realiza a consulta do produto pelo código
 	public void consultarProduto(int codigo) {
 
 		if (hasProduto(codigo)) {

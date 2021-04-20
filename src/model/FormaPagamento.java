@@ -10,7 +10,7 @@ public abstract class FormaPagamento {
 	
 	private double valorTotal;
 	private String tipoPagamento;
-	private Date dataPagamento;
+	private LocalDate dataPagamento;
 
 	protected final double taxaOperadora = 0.02; //Taxa da operadora de cartão: 2% de Juros
 	protected final double valorEmissaoBoleto = 1.00; //Taxa de emissão do boleto: R$ 1,00 de taxa.
@@ -37,16 +37,22 @@ public abstract class FormaPagamento {
 		this.tipoPagamento = tipoPagamento;
 	}
 
-	public Date getDataPagamento() {
+	public LocalDate getDataPagamento() {
 		return dataPagamento;
 	}
-
+	
+	/*
 	public void setDataPagamento(String dataPagamento) throws ParseException {
 		this.dataPagamento = formatador.parse(dataPagamento);
+	}*/
+	
+	public void setDataPagamento(LocalDate dataPagamento) {
+		
+		this.dataPagamento = dataPagamento;
 	}
 	
 	//Método de realizar pagamento.
-	public abstract void realizarPagamento(Vendedor vendedor, Comprador comprador, double valorCompra);	
+	public abstract void realizarPagamento(Vendedor vendedor, Comprador comprador, double valorCompra, LocalDate dataPagamento);	
 
 	//Returna true caso o comprador tenha fundos para realização da compra.
 	public boolean checarFundos(Comprador comprador, double valorCompra) {
@@ -61,6 +67,7 @@ public abstract class FormaPagamento {
 		return hasFundos;
 	}
 	
+	@Deprecated
 	//Retorna false caso a data de pagamento seja maior que a data do vencimento.
 	public boolean verificavencimento(LocalDate dataVencimento, LocalDate dataPagamento) {
 
@@ -88,6 +95,7 @@ public abstract class FormaPagamento {
 		return vencido;
 	}
 
+	@Deprecated
 	//Converte um Objeto do tipo String para Date.
 	protected Date convertStringtoDate(String data) throws ParseException {
 

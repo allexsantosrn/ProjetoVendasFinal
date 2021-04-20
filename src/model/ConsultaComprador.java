@@ -19,9 +19,9 @@ public class ConsultaComprador extends Comprador {
 
 		else {
 			compradores.add(comprador);
-			System.out.println("");
-			System.out.println("Comprador " + comprador.getNome() + " cadastrado com sucesso.");
-			System.out.println("");
+			//System.out.println("");
+			System.out.println("Comprador " + comprador.getNome() + " de CPF: "+comprador.getCpf()+" cadastrado com sucesso.");
+			//System.out.println("");
 		}
 
 	}
@@ -115,6 +115,7 @@ public class ConsultaComprador extends Comprador {
 		comprador.adicionarCompra(venda);
 	}
 
+	//Retorna uma string com o nome do comprador.
 	public String retornaNomeComprador(String cpf) {
 
 		String retorno = "Comprador";
@@ -135,6 +136,7 @@ public class ConsultaComprador extends Comprador {
 		return retorno;
 	}
 
+	//Retorna uma String com o CPF do comprador.	
 	public String retornaCPFComprador(String cpf) {
 
 		String retorno = "Comprador";
@@ -155,6 +157,7 @@ public class ConsultaComprador extends Comprador {
 		return retorno;
 	}
 
+	//Retorna uma String com o saldo do comprador.
 	public String retornaSaldoComprador(String cpf) {
 
 		String retorno = "Comprador";
@@ -176,6 +179,7 @@ public class ConsultaComprador extends Comprador {
 		return retorno;
 	}
 	
+	//Retorna uma String com os valores a pagar pelo comprador. 
 	public String retornaValoresPagarComprador(String cpf) {
 
 		String retorno = "Comprador";

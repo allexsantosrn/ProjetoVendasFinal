@@ -67,8 +67,7 @@ public class Comprador {
 		this.qtdcomprasRealizadas = qtdcomprasRealizadas;
 	}	
 
-	//Adiciona uma compra/venda a coleÃ§Ã£o de compras.
-	
+	//Adiciona uma compra/venda a coleção de compras.	
 	public void adicionarCompra(Venda venda) {
 		compras.add(venda);
 	}
@@ -98,7 +97,7 @@ public class Comprador {
 		this.qtdcomprasRealizadas = this.qtdcomprasRealizadas + 1;
 	}
 	
-	//Incretmenta os valores a pagar pelo comprador.
+	//Incrementa os valores a pagar pelo comprador.
 	public void incrementaValoresaPagar(double valor) {
 		this.valoresaPagar = this.valoresaPagar + valor;
 	}

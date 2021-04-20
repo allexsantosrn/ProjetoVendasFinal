@@ -19,9 +19,9 @@ public class ConsultaVendedor {
 
 		else {
 			vendedores.add(vendedor);
-			System.out.println("");
-			System.out.println("Vendedor "+vendedor.getNome()+" cadastrado com sucesso.");
-			System.out.println("");
+			//System.out.println("");
+			System.out.println("Vendedor "+vendedor.getNome()+" de CNPJ: "+vendedor.getCnpj()+" cadastrado com sucesso.");
+			//System.out.println("");
 		}
 
 	}
@@ -41,8 +41,7 @@ public class ConsultaVendedor {
 		return existe;
 	}
 
-	//Realiza a consulta de um vendedor.
-	
+	//Realiza a consulta de um vendedor.	
 	public void consultarVendedor(String cnpj) {
 
 		if (hasVendedor(cnpj)) {
@@ -155,6 +154,7 @@ public class ConsultaVendedor {
 		vendedor.adicionarVenda(venda);
 	} 
 	
+	//Retorna uma String com o nome do vendedor.
 	public String retornaNomeVendedor (String cnpj) {
 		
 		String retorno = "Vendedor";
@@ -175,6 +175,7 @@ public class ConsultaVendedor {
 		return retorno;
 	}
 	
+	//Retorna uma String com o CNPJ do vendedor.
 	public String retornaCNPJVendedor (String cnpj) {
 		
 		String retorno = "Vendedor";
@@ -195,6 +196,7 @@ public class ConsultaVendedor {
 		return retorno;
 	}
 	
+	//Retorna uma String com o saldo do vendedor.
 	public String retornaSaldoVendedor (String cnpj) {
 			
 			String retorno = "Vendedor";
@@ -216,6 +218,7 @@ public class ConsultaVendedor {
 			return retorno;
 		}
 	
+	////Retorna uma String com o CNPJ do vendedor.
 	public String retornaValoresReceberVendedor (String cnpj) {
 		
 		String retorno = "Vendedor";
