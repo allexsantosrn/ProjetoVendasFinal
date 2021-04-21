@@ -98,3 +98,21 @@ Na realização da venda, alguns regras de negócio foram adicionadas (Com opções d
 A interface de venda também permite a visualização das informações do comprador, vendedor e produto em tela, incluindo aí os valores de saldo atualizados do vendedor e comprador. 
 
 Foram desenvolvidos também o botão de voltar, em cada tela. Na venda, também foram adicionadas as opções de reiniciar compra, limpar carrinho e de adicionar itens ao carrinho de compras.
+
+
+## Base de dados
+
+Ao iniciar o sistema são criados automaticamente os compradores com CPF´s: 1, 2 e 3.
+
+ao iniciar o sistema são criados automaticamente os vendedores com CNPJ´s: 1, 2 e 3.
+
+Ao iniciar o sistema são criados automaticamente os produtos com códigos de 1 a 9.
+
+Os itens de códigos de 1 a 3 estão associados ao vendedor de CNPJ = 1.
+
+Os itens de códigos de 4 a 6 estão associados ao vendedor de CNPJ = 2.
+
+Os itens de códigos de 7 a 9 estão associados ao vendedor de CNPJ = 3.
+
+
+
